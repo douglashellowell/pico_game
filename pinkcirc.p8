@@ -4,7 +4,6 @@ __lua__
 -- x = 64 y = 64
 
 function _init()
-	music(0)
 	player = {}
 	player.x = 5
 	player.y = 5
@@ -19,10 +18,7 @@ function _update()
 	if(btn(1)) then player.x=player.x+1 end
 	if(btn(2)) then player.y=player.y-1 end
 	if(btn(3)) then player.y=player.y+1 end
-	if(distance(player, apple) < 1.5 and player.points < 1) then
-		sfx(1)
-		player.points = player.points + 1 
-	end
+	if(distance(player, apple) < 1) then player.points = player.points + 1 end
 end
 
 function _draw()
@@ -71,3 +67,6 @@ __map__
 __sfx__
 011000000c0530000300003000030c0530000300003000030c0530000300003000030c0530000300003000030c0530000300003000030c0530000300003000030c0530000300003000030c053000030000300003
 000300002f0773106733067340673207733067370673a0672d0002f0002f000210002b0002d0002f0002f000210002b0002d0002f000000070000700007000070000700007000070000700007000070000700007
+__music__
+02 00424344
+
