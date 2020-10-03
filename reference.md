@@ -18,3 +18,13 @@
 #### Music
 
 0 - main theme
+
+#### Controls
+
+0 (left) - move left
+1 (right) - move right
+2 (up) - move up
+3 (down) - move down
+
+4 (z) - run
+5 (x) -

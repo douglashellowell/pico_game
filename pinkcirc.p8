@@ -9,6 +9,8 @@ function _init()
 	player.y = 5
 	player.face = 16
 	player.points = 0
+	player.speed = 1
+	player.energy = 100
 	banana = {}
 	banana.x = 50
 	banana.y = 50
@@ -16,27 +18,42 @@ end
 
 function _update()
 	if(btn(0)) then 
-	player.x=player.x-1 
+	player.x=player.x-player.speed 
 	player.face = 1
 	end
 
 	if(btn(1)) then 
-	player.x=player.x+1 
+	player.x=player.x+player.speed 
 	player.face = 0
 	end
 
 	if(btn(2)) then 
-	player.y=player.y-1 
+	player.y=player.y-player.speed
+	player.face = 17
 	end
 
 	if(btn(3)) then 
-	player.y=player.y+1 
+	player.y=player.y+player.speed
 	player.face = 16
 	end
 
-	if(distance(player, banana) < 1) then 
+	if(btn(4) and player.energy > 1) then
+	player.speed = 2
+	player.energy = player.energy - 2
+	else
+	player.speed = 1
+	end
+
+	if(distance(player, banana) < 3) then 
 	sfx(1)
 	player.points = player.points + 1 
+	banana.x = rnd(110)
+	banana.y = rnd(110)
+	if(player.energy < 70) then
+		player.energy = player.energy + 30
+		else
+		player.energy = 100
+	end
 	end
 end
 
@@ -46,8 +63,10 @@ function _draw()
 	map(0,0,0,64,16,8)
     spr(player.face,player.x,player.y)
     spr(4,banana.x,banana.y)
-	print("player.x:"..player.x)
-	print("player.y:"..player.y)
+	-- print("player.x:"..player.x)
+	-- print("player.y:"..player.y)
+	rect(0, 119, 101, 126, 8)
+	rectfill(1, 120, player.energy, 125, 14)
 	print("distance:"..distance(player,banana))
 	print("Points: "..player.points)
 end
