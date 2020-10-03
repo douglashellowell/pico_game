@@ -7,6 +7,7 @@ function _init()
 	player = {}
 	player.x = 5
 	player.y = 5
+	player.points = 0
 	apple = {}
 	apple.x = 50
 	apple.y = 50
@@ -17,6 +18,7 @@ function _update()
 	if(btn(1)) then player.x=player.x+1 end
 	if(btn(2)) then player.y=player.y-1 end
 	if(btn(3)) then player.y=player.y+1 end
+	if(distance(player, apple) < 1) then player.points = player.points + 1 end
 end
 
 function _draw()
@@ -28,6 +30,7 @@ function _draw()
 	print("player.x:"..player.x)
 	print("player.y:"..player.y)
 	print("distance:"..distance(player,apple))
+	print("Points: "..player.points)
 end
 
 function distance(p0, p1)
