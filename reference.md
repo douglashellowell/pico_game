@@ -8,6 +8,7 @@
 3 - grass
 4 - banana
 16 - ball face down
+17 - ballface backward
 
 #### SFX
 
