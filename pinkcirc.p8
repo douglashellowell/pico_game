@@ -20,7 +20,7 @@ function _update()
 	if(btn(2)) then player.y=player.y-1 end
 	if(btn(3)) then player.y=player.y+1 end
 	if(distance(player, apple) < 1.5 and player.points < 1) then
-		sfx(0)
+		sfx(1)
 		player.points = player.points + 1 
 	end
 end
