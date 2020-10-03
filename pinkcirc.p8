@@ -1,41 +1,64 @@
 pico-8 cartridge // http://www.pico-8.com
 version 29
 __lua__
--- x = 64 y = 64
 
 function _init()
+	music(0)
 	player = {}
 	player.x = 5
 	player.y = 5
+	player.face = 16
 	player.points = 0
-	apple = {}
-	apple.x = 50
-	apple.y = 50
+	banana = {}
+	banana.x = 50
+	banana.y = 50
 end
 
 function _update()
-	if(btn(0)) then player.x=player.x-1 end
-	if(btn(1)) then player.x=player.x+1 end
-	if(btn(2)) then player.y=player.y-1 end
-	if(btn(3)) then player.y=player.y+1 end
-	if(distance(player, apple) < 1) then player.points = player.points + 1 end
+	if(btn(0)) then 
+	player.x=player.x-1 
+	player.face = 1
+	end
+
+	if(btn(1)) then 
+	player.x=player.x+1 
+	player.face = 0
+	end
+
+	if(btn(2)) then 
+	player.y=player.y-1 
+	end
+
+	if(btn(3)) then 
+	player.y=player.y+1 
+	player.face = 16
+	end
+
+	if(distance(player, banana) < 1) then 
+	sfx(1)
+	player.points = player.points + 1 
+	end
 end
 
 function _draw()
 	cls(2)
 	map(0,0,0,0,16,8)
 	map(0,0,0,64,16,8)
-    spr(1,player.x,player.y)
-    spr(4,apple.x,apple.y)
+    spr(player.face,player.x,player.y)
+    spr(4,banana.x,banana.y)
 	print("player.x:"..player.x)
 	print("player.y:"..player.y)
-	print("distance:"..distance(player,apple))
+	print("distance:"..distance(player,banana))
 	print("Points: "..player.points)
 end
 
 function distance(p0, p1)
  dx=p0.x-p1.x dy=p0.y-p1.y
  return sqrt(dx*dx+dy*dy)
+end
+
+function isInbounds()
+
 end
 __gfx__
 009999000099990033333333333a3333000000900000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
