@@ -4,6 +4,7 @@ __lua__
 -- x = 64 y = 64
 
 function _init()
+	music(0)
 	player = {}
 	player.x = 5
 	player.y = 5
@@ -18,7 +19,10 @@ function _update()
 	if(btn(1)) then player.x=player.x+1 end
 	if(btn(2)) then player.y=player.y-1 end
 	if(btn(3)) then player.y=player.y+1 end
-	if(distance(player, apple) < 1) then player.points = player.points + 1 end
+	if(distance(player, apple) < 1.5 and player.points < 1) then
+		sfx(0)
+		player.points = player.points + 1 
+	end
 end
 
 function _draw()
