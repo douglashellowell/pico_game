@@ -9,10 +9,10 @@ function _init()
 	player.y = 5
 	player.face = 'down'
 	player.sprites = {
-		['up'] = {['face'] = x, ['tail']  = y},
-		['down'] = {['face'] = x, ['tail']  = y},
-		['left'] = {['face'] = x, ['tail']  = y},
-		['right'] = {['face'] = x, ['tail']  = y},
+		['up'] = {['face'] = 6, ['tail']  = 22},
+		['down'] = {['face'] = 54, ['tail']  = 38},
+		['left'] = {['face'] = 40, ['tail']  = 41},
+		['right'] = {['face'] = 43, ['tail']  = 42},
 	}
 	player.points = 0
 	player.speed = 2
@@ -20,6 +20,8 @@ function _init()
 	player.turning = false
 	player.tail_x = player.x
 	player.tail_y = player.y - 8
+	player.wiggle_timer = 0
+	player.wiggle = 0
 	banana = {}
 	banana.x = 50
 	banana.y = 50
@@ -30,31 +32,49 @@ function _init()
 end
 
 function _update()
+-- wiggle
+player.wiggle_timer = player.wiggle_timer + 0.5
+player.wiggle = player.wiggle_timer % 2
+
+
+
+
 -- left
-	if(btn(0)) then 
-	player.x=player.x-player.speed
-	 
-	player.face = 'left'
+	if(player.x > 0) then
+		if(btn(0)) then 
+		player.x=player.x-player.speed
+		player.face = 'left'
+		player.tail_x = player.x + 8
+		player.tail_y = player.y
+		end
 	end
-
 -- right
-	if(btn(1)) then 
-	player.x=player.x+player.speed 
-	player.face = 'right'
+	if(player.x < 120) then
+		if(btn(1)) then 
+		player.x=player.x+player.speed 
+		player.face = 'right'
+		player.tail_x = player.x - 8
+		player.tail_y = player.y
+		end
 	end
-
 -- up
-	if(btn(2)) then 
-	player.y=player.y-player.speed
-	player.face = 'up'
+	if(player.y > 0) then
+		if(btn(2)) then 
+		player.y=player.y-player.speed
+		player.face = 'up'
+		player.tail_x = player.x
+		player.tail_y = player.y + 8
+		end
 	end
-
 -- down
-	if(btn(3)) then 
-	player.y=player.y+player.speed
-	player.face = 'down'
+	if(player.y < 120) then
+		if(btn(3)) then 
+		player.y=player.y+player.speed
+		player.face = 'down'
+		player.tail_x = player.x
+		player.tail_y = player.y - 8
+		end
 	end
-
 -- z
 	if(btn(4) and player.energy > 1) then
 	-- player.speed = player.speed + 1
