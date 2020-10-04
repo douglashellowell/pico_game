@@ -65,6 +65,8 @@ function _update()
 			player.energy = 100
 		end
 	end
+
+	player.energy = player.energy - 0.25
 end
 
 function _draw()
