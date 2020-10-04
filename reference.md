@@ -10,6 +10,8 @@
 16 - ball face down
 17 - ballface backward
 
+5 to 10 - item get animation
+
 #### SFX
 
 0 - main theme
