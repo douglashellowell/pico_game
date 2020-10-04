@@ -14,10 +14,10 @@
 7 + 23 - gerbil move up 2
 38 + 54 - gerbil move down 1 🐁
 39 + 55 - gerbil move down 2
-40 + 41 - gerbil move left 1 🐁
-56 + 57 - gerbil move left 2 
-42 + 43 - gerbil move right 1 🐁
-58 + 59 - gerbil move right 2
+11 + 27 - gerbil move left 1 🐁
+12 + 28 - gerbil move left 2 
+13 + 29 - gerbil move right 1 🐁
+14 + 30 - gerbil move right 2
 
 8 - gerbil 1 move left
 9 - gerbil 1 move right
