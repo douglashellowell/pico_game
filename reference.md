@@ -10,8 +10,15 @@
 16 - ball face down
 17 - ballface backward
 
-6 + 22 - gerbil up move 1 🐁
-7 + 23 gerbil up move 2
+6 + 22 - gerbil move up 1 🐁
+7 + 23 - gerbil move up 2
+38 + 54 - gerbil move down 1 🐁
+39 + 55 - gerbil move down 2
+40 + 41 - gerbil move left 1 🐁
+56 + 57 - gerbil move left 2 
+42 + 43 - gerbil move right 1 🐁
+58 + 59 - gerbil move right 2
+
 8 - gerbil 1 move left
 9 - gerbil 1 move right
 24 - gerbil 1 move up
