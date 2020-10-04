@@ -33,6 +33,7 @@
 
 0 - drum
 1 - banana get
+3 - squeak
 
 #### Music
 
