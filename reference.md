@@ -12,6 +12,10 @@
 
 6 + 22 - gerbil up move 1 🐁
 7 + 23 gerbil up move 2
+8 - gerbil 1 move left
+9 - gerbil 1 move right
+24 - gerbil 1 move up
+25 - gerbil 1 move down
 
 64 - pipe vertical overlay
 65 - pipe vertical bg
