@@ -10,23 +10,19 @@
 16 - ball face down
 17 - ballface backward
 
-5 to 10 - item get animation
+6 + 22 - gerbil up move 1 🐁
+7 + 23 gerbil up move 2
+
+64 - pipe vertical overlay
+65 - pipe vertical bg
+66 - pipe horizontal overlay
+67 - pipe horizontal bg
 
 #### SFX
 
-0 - main theme
+0 - drum
 1 - banana get
 
 #### Music
 
 0 - main theme
-
-#### Controls
-
-0 (left) - move left
-1 (right) - move right
-2 (up) - move up
-3 (down) - move down
-
-4 (z) - run
-5 (x) -
