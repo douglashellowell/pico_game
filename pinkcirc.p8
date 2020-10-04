@@ -7,10 +7,19 @@ function _init()
 	player = {}
 	player.x = 5
 	player.y = 5
-	player.face = 16
+	player.face = 'down'
+	player.sprites = {
+		['up'] = {['face'] = x, ['tail']  = y},
+		['down'] = {['face'] = x, ['tail']  = y},
+		['left'] = {['face'] = x, ['tail']  = y},
+		['right'] = {['face'] = x, ['tail']  = y},
+	}
 	player.points = 0
 	player.speed = 2
 	player.energy = 100
+	player.turning = false
+	player.tail_x = player.x
+	player.tail_y = player.y - 8
 	banana = {}
 	banana.x = 50
 	banana.y = 50
@@ -21,26 +30,32 @@ function _init()
 end
 
 function _update()
+-- left
 	if(btn(0)) then 
-	player.x=player.x-player.speed 
-	player.face = 1
+	player.x=player.x-player.speed
+	 
+	player.face = 'left'
 	end
 
+-- right
 	if(btn(1)) then 
 	player.x=player.x+player.speed 
-	player.face = 0
+	player.face = 'right'
 	end
 
+-- up
 	if(btn(2)) then 
 	player.y=player.y-player.speed
-	player.face = 17
+	player.face = 'up'
 	end
 
+-- down
 	if(btn(3)) then 
 	player.y=player.y+player.speed
-	player.face = 16
+	player.face = 'down'
 	end
 
+-- z
 	if(btn(4) and player.energy > 1) then
 	-- player.speed = player.speed + 1
 	player.speed = adjSpeed(0.5)
@@ -77,12 +92,14 @@ function _draw()
 	-- center camera
 	camera()
 	-- draw player (sprite, x, y)
-    spr(player.face,player.x,player.y)
+    spr(player.sprites[player.face]['face'],player.x,player.y)
+    spr(player.sprites[player.face]['tail'],player.tail_x,player.tail_y)
 	-- draw banana
     spr(4,banana.x,banana.y)
 	rect(0, 119, 101, 126, 8)
 	rectfill(1, 120, player.energy, 125, 14)
-	print("distance:"..distance(player,banana))
+	-- print("distance:"..distance(player,banana))
+	print("player.face"..player.face)
 	print("ball is on "..mget(player.x /8, player.y/8))
 	str = "Points: "..player.points
 	str_len = #str

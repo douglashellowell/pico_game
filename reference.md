@@ -30,3 +30,12 @@
 #### Music
 
 0 - main theme
+
+#### Controls
+
+(left/0) - move left
+(right/1) - move right
+(up/2) - move up
+(down/3) - move down
+
+(z/4) - run
