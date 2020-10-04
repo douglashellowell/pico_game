@@ -8,11 +8,13 @@ function _init()
 	player.x = 5
 	player.y = 5
 	player.face = 'down'
+	player.wiggle_timer = 0
+	player.wiggle = 0
 	player.sprites = {
 		['up'] = {['face'] = 6, ['tail']  = 22},
 		['down'] = {['face'] = 54, ['tail']  = 38},
-		['left'] = {['face'] = 40, ['tail']  = 41},
-		['right'] = {['face'] = 43, ['tail']  = 42},
+		['left'] = {['face'] = 11, ['tail']  = 27},
+		['right'] = {['face'] = 13, ['tail']  = 29},
 	}
 	player.points = 0
 	player.speed = 2
@@ -20,8 +22,6 @@ function _init()
 	player.turning = false
 	player.tail_x = player.x
 	player.tail_y = player.y - 8
-	player.wiggle_timer = 0
-	player.wiggle = 0
 	banana = {}
 	banana.x = 50
 	banana.y = 50
@@ -33,8 +33,8 @@ end
 
 function _update()
 -- wiggle
-player.wiggle_timer = player.wiggle_timer + 0.5
-player.wiggle = player.wiggle_timer % 2
+player.wiggle_timer = player.wiggle_timer + 0.1
+player.wiggle = flr(player.wiggle_timer) % 2
 
 
 
@@ -101,7 +101,9 @@ player.wiggle = player.wiggle_timer % 2
 		end
 	end
 
-	player.energy = player.energy - 0.25
+	if(player.energy > 0) then
+		player.energy = player.energy - 0.25
+	end
 end
 
 function _draw()
@@ -112,14 +114,15 @@ function _draw()
 	-- center camera
 	camera()
 	-- draw player (sprite, x, y)
-    spr(player.sprites[player.face]['face'],player.x,player.y)
-    spr(player.sprites[player.face]['tail'],player.tail_x,player.tail_y)
+    spr(player.sprites[player.face]['face'] + player.wiggle,player.x,player.y)
+    spr(player.sprites[player.face]['tail'] + player.wiggle,player.tail_x,player.tail_y)
 	-- draw banana
     spr(4,banana.x,banana.y)
 	rect(0, 119, 101, 126, 8)
 	rectfill(1, 120, player.energy, 125, 14)
 	-- print("distance:"..distance(player,banana))
 	print("player.face"..player.face)
+	print("wiggle"..player.wiggle)
 	print("ball is on "..mget(player.x /8, player.y/8))
 	str = "Points: "..player.points
 	str_len = #str
