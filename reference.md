@@ -15,7 +15,7 @@
 38 + 54 - gerbil move down 1 🐁
 39 + 55 - gerbil move down 2
 11 + 27 - gerbil move left 1 🐁
-12 + 28 - gerbil move left 2 
+12 + 28 - gerbil move left 2
 13 + 29 - gerbil move right 1 🐁
 14 + 30 - gerbil move right 2
 
@@ -33,7 +33,7 @@
 
 0 - drum
 1 - banana get
-3 - squeak
+2 - squeak
 
 #### Music
 
